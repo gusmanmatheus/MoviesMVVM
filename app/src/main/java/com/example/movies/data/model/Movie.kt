@@ -32,8 +32,7 @@ data class Movie(
     @SerializedName("vote_average")
     val noteAverage: Double,
     @SerializedName("release_date")
-    val date: String,
+    var date: String,
     var favorite: Boolean = false,
     var genres: String
-
 )
