@@ -39,6 +39,7 @@ class MoviesActivity : AppCompatActivity() {
         adapter = MoviesAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        //testing man
     }
 
     fun setUpList() {
