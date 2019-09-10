@@ -3,6 +3,7 @@ package com.example.movies.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ class MoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupBindings()
+        clickMovies()
     }
 
     private fun setupBindings() {
@@ -48,5 +50,11 @@ class MoviesActivity : AppCompatActivity() {
 
     fun bindingInit() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    }
+
+    fun clickMovies() {
+        adapter.onItemClick = {
+            Toast.makeText(this, it.title, Toast.LENGTH_LONG).show()
+        }
     }
 }
