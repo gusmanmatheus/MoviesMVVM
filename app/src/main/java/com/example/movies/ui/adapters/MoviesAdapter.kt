@@ -14,7 +14,6 @@ import com.example.movies.dependences.Util.datePatterBr
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.Holder>() {
     var data: MutableList<Movie> = mutableListOf()
     var onItemClick: ((Movie) -> Unit) = { }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val layout = LayoutInflater.from(parent.context)
         return Holder(layout.inflate(R.layout.movie_item, parent, false))
@@ -26,7 +25,6 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.Holder>() {
         val binding = holder.binding
         data[position].date = datePatterBr(data[position].date)
         binding?.movie = data[position]
-        //  onItemClick = {data[position]}
     }
 
     fun addAll(data: List<Movie>) {
@@ -37,6 +35,12 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.Holder>() {
 
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                onItemClick.invoke(data[adapterPosition])
+            }
+        }
+
         val binding: MovieItemBinding? = DataBindingUtil.bind(itemView)
 
     }
